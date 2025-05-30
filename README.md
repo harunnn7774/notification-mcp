@@ -87,6 +87,14 @@ npm run watch
 
 ## Installation
 
+### Installing via Smithery
+
+To install your MCP Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@pinkpixel-dev/notification-mcp):
+
+```bash
+npx -y @smithery/cli install @pinkpixel-dev/notification-mcp --client claude
+```
+
 ### Run with npx:
 
 ```json
