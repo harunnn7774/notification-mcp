@@ -40,8 +40,8 @@ Whichever sound you choose, you must set the `MCP_NOTIFICATION_SOUND_PATH` envir
 {
   "mcpServers": {
     "notifications": {
-      "command": "node",
-      "args": ["\\path\\to\\notification-mcp\\build\\index.js"],
+      "command": "npx",
+      "args": ["-y", "@pinkpixel/notification-mcp"],
       "env": {
         "MCP_NOTIFICATION_SOUND_PATH": "C:\\Users\\YOUR_USERNAME\\path\\to\\your\\sound.mp3"
       }
