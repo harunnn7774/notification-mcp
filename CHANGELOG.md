@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased] - 2025-05-31
 
 ### Added ✨
+- **Random Sound Option**: Set `MCP_NOTIFICATION_SOUND=random` to randomly play one of the 5 bundled sounds 🎲
 - **Bundled Sound Assets**: MP3 files now included in npm package for out-of-the-box functionality
 - **NPX Compatibility**: Full support for `npx @pinkpixel/notification-mcp` with bundled sounds
 - **Enhanced Configuration**: `MCP_NOTIFICATION_SOUND` environment variable for choosing bundled sounds

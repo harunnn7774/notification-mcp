@@ -25,6 +25,7 @@ A Model Context Protocol server that allows AI agents to play notification sound
 - `gentle` - Soft, pleasant default sound (default) 🔔
 - `pleasant` - Balanced, professional tone 📞
 - `retro` - Nostalgic, vintage-style notification 🕹️
+- `random` - Randomly plays one of the 5 sounds 🎲
 
 ## 🚀 Quick Start
 
@@ -57,7 +58,22 @@ Just run it with npx - sounds included!
 }
 ```
 
-### Option 3: Use Your Own Custom Sound
+### Option 3: Random Sound Each Time 🎲
+```json
+{
+  "mcpServers": {
+    "notifications": {
+      "command": "npx",
+      "args": ["-y", "@pinkpixel/notification-mcp"],
+      "env": {
+        "MCP_NOTIFICATION_SOUND": "random"
+      }
+    }
+  }
+}
+```
+
+### Option 4: Use Your Own Custom Sound
 ```json
 {
   "mcpServers": {
@@ -80,7 +96,7 @@ The notification sound can be configured using environment variables:
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `MCP_NOTIFICATION_SOUND` | Choose from bundled sounds: `cosmic`, `fairy`, `gentle`, `pleasant`, `retro` | `gentle` |
+| `MCP_NOTIFICATION_SOUND` | Choose from bundled sounds: `cosmic`, `fairy`, `gentle`, `pleasant`, `retro`, `random` | `gentle` |
 | `MCP_NOTIFICATION_SOUND_PATH` | Absolute path to your own MP3 file (overrides bundled sounds) | `null` |
 
 ### Priority Order
@@ -177,6 +193,7 @@ All sound files are located in the `sounds/` directory and are automatically inc
 - Gentle: `sounds/gentle_chime.mp3` - 🔔 Default (soft)
 - Pleasant:`sounds/pleasant_chime.mp3` - 📞 Professional  
 - Retro: `sounds/retro_chime.mp3` - 🕹️ Vintage
+- Random: Set `MCP_NOTIFICATION_SOUND=random` - 🎲 Surprise me!
 
 ## 🤝 Contributing
 

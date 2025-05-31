@@ -77,12 +77,13 @@ notification-mcp/
 
 ### **Enhanced Configuration System**
 - **Environment Variables:**
-  - `MCP_NOTIFICATION_SOUND`: Choose from bundled sounds (`cosmic`, `fairy`, `gentle`, `pleasant`, `retro`)
+  - `MCP_NOTIFICATION_SOUND`: Choose from bundled sounds (`cosmic`, `fairy`, `gentle`, `pleasant`, `retro`, `random`)
   - `MCP_NOTIFICATION_SOUND_PATH`: Custom absolute path to MP3 file (overrides bundled)
 - **Priority Order:**
   1. Custom path (highest priority)
-  2. Bundled sound selection
+  2. Bundled sound selection (including random)
   3. Default gentle chime
+- **Random Selection:** When set to `random`, randomly picks one of the 5 bundled sounds each time
 - **Asset Location:** Uses `path.join(__dirname, '..', soundFile)` for npx compatibility
 
 ---
