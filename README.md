@@ -1,18 +1,18 @@
 <div align="center">
   <img src="https://res.cloudinary.com/di7ctlowx/image/upload/v1748659972/notification-mcp-logo_ymwx1p.jpg" alt="Notification MCP Logo" width="200" height="200"/>
-  
+
   # ✨ Notifications MCP Server ✨
-  
+
   **Dream it, Pixel it. Made with ❤️ by Pink Pixel.**
-  
+
   [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Model Context Protocol](https://img.shields.io/badge/Model%20Context%20Protocol-Server-green)](https://github.com/model-context-protocol/model-context-protocol) [![npm version](https://badge.fury.io/js/@pinkpixel%2Fnotification-mcp.svg)](https://www.npmjs.com/package/@pinkpixel/notification-mcp) [![smithery badge](https://smithery.ai/badge/@pinkpixel-dev/notification-mcp)](https://smithery.ai/server/@pinkpixel-dev/notification-mcp)
-  
+
   [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/) [![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/) [![npm](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/package/@pinkpixel/notification-mcp)
-  
+
   [![NPM Downloads](https://img.shields.io/npm/dm/@pinkpixel/notification-mcp?style=flat-square&color=ff69b4)](https://www.npmjs.com/package/@pinkpixel/notification-mcp) [![GitHub Stars](https://img.shields.io/github/stars/pinkpixel-dev/notification-mcp?style=flat-square&color=ff69b4)](https://github.com/pinkpixel-dev/notification-mcp/stargazers) [![GitHub Issues](https://img.shields.io/github/issues/pinkpixel-dev/notification-mcp?style=flat-square&color=ff69b4)](https://github.com/pinkpixel-dev/notification-mcp/issues) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg?style=flat-square)](http://makeapullrequest.com)
-  
+
   [![Platform Support](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS-lightgrey?style=flat-square)](https://github.com/pinkpixel-dev/notification-mcp) [![Built with Love](https://img.shields.io/badge/Built%20with-❤️-ff1744.svg?style=flat-square)](https://pinkpixel.dev) [![Pink Pixel](https://img.shields.io/badge/Pink-Pixel-ff69b4?style=flat-square&logo=sparkles)](https://pinkpixel.dev)
-  
+
 </div>
 
 ## Overview
@@ -30,7 +30,7 @@ A Model Context Protocol server that allows AI agents to play notification sound
 ### 🎵 Built-in Sound Library
 **5 high-quality notification sounds bundled with the package:**
 - `cosmic` - Space-themed notification 🌌
-- `fairy` - Magical, whimsical tone 🧚‍♀️  
+- `fairy` - Magical, whimsical tone 🧚‍♀️
 - `gentle` - Soft, pleasant default sound (default) 🔔
 - `pleasant` - Balanced, professional tone 📞
 - `retro` - Nostalgic, vintage-style notification 🕹️
@@ -110,7 +110,7 @@ The notification sound can be configured using environment variables:
 
 ### Priority Order
 1. **Custom Path** (`MCP_NOTIFICATION_SOUND_PATH`) - highest priority
-2. **Bundled Sound** (`MCP_NOTIFICATION_SOUND`) - choose from 5 included sounds  
+2. **Bundled Sound** (`MCP_NOTIFICATION_SOUND`) - choose from 5 included sounds
 3. **Default** - gentle chime if nothing is specified
 
 ## 💻 Usage
@@ -119,7 +119,7 @@ Once configured, your MCP client can call the `play_notification` tool:
 
 ```typescript
 await client.request({
-  method: "tools/call", 
+  method: "tools/call",
   params: {
     name: "play_notification",
     arguments: {
@@ -200,7 +200,7 @@ All sound files are located in the `sounds/` directory and are automatically inc
 - Cosmic: `sounds/cosmic_chime.mp3` - 🌌 Space-themed
 - Fairy: `sounds/fairy_chime.mp3` - 🧚‍♀️ Magical
 - Gentle: `sounds/gentle_chime.mp3` - 🔔 Default (soft)
-- Pleasant:`sounds/pleasant_chime.mp3` - 📞 Professional  
+- Pleasant:`sounds/pleasant_chime.mp3` - 📞 Professional
 - Retro: `sounds/retro_chime.mp3` - 🕹️ Vintage
 - Random: Set `MCP_NOTIFICATION_SOUND=random` - 🎲 Surprise me!
 
@@ -215,7 +215,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🌟 About Pink Pixel
 
 - **Website:** [pinkpixel.dev](https://pinkpixel.dev)
-- **GitHub:** [github.com/pinkpixel-dev](https://github.com/pinkpixel-dev)  
+- **GitHub:** [github.com/pinkpixel-dev](https://github.com/pinkpixel-dev)
 - **Discord:** @sizzlebop
 
 ---
