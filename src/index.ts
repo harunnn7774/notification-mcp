@@ -9,24 +9,47 @@ import {
 import { exec } from 'node:child_process';
 import { promisify } from 'node:util';
 import * as path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const execAsync = promisify(exec);
 
+// Get the directory where this script is located (works with npx!)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 // Available sound files
 const SOUND_FILES = {
-  cosmic: 'cosmic_chime.mp3',
-  fairy: 'fairy_chime.mp3',
-  gentle: 'gentle_chime.mp3',
-  pleasant: 'pleasant_chime.mp3',
-  retro: 'retro_chime.mp3'
+  cosmic: 'sounds/cosmic_chime.mp3',
+  fairy: 'sounds/fairy_chime.mp3',
+  gentle: 'sounds/gentle_chime.mp3',
+  pleasant: 'sounds/pleasant_chime.mp3',
+  retro: 'sounds/retro_chime.mp3'
 };
 
 // Get configured sound from environment variables
 const DEFAULT_SOUND_NAME = process.env.MCP_NOTIFICATION_SOUND || 'gentle';
-const DEFAULT_SOUND_FILE = SOUND_FILES[DEFAULT_SOUND_NAME as keyof typeof SOUND_FILES] || SOUND_FILES.gentle;
 const USER_CONFIGURED_SOUND_PATH = process.env.MCP_NOTIFICATION_SOUND_PATH;
 
-const SOUND_FILE_TO_PLAY = USER_CONFIGURED_SOUND_PATH || path.join(process.cwd(), DEFAULT_SOUND_FILE);
+// Function to get a random sound
+function getRandomSound(): string {
+  const soundKeys = Object.keys(SOUND_FILES) as (keyof typeof SOUND_FILES)[];
+  const randomKey = soundKeys[Math.floor(Math.random() * soundKeys.length)];
+  return SOUND_FILES[randomKey];
+}
+
+// Determine which sound file to use
+function getSoundFile(): string {
+  if (USER_CONFIGURED_SOUND_PATH) {
+    return USER_CONFIGURED_SOUND_PATH;
+  }
+  
+  if (DEFAULT_SOUND_NAME === 'random') {
+    return path.join(__dirname, '..', getRandomSound());
+  }
+  
+  const DEFAULT_SOUND_FILE = SOUND_FILES[DEFAULT_SOUND_NAME as keyof typeof SOUND_FILES] || SOUND_FILES.gentle;
+  return path.join(__dirname, '..', DEFAULT_SOUND_FILE);
+}
 
 /**
  * Create an MCP server with tool capability for playing notifications
@@ -34,7 +57,7 @@ const SOUND_FILE_TO_PLAY = USER_CONFIGURED_SOUND_PATH || path.join(process.cwd()
 const server = new Server(
   {
     name: "notification-mcp",
-    version: "0.1.0",
+    version: "0.1.2",
   },
   {
     capabilities: {
@@ -77,6 +100,9 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
   }
 
   try {
+    // Get the sound file to play (potentially random)
+    const SOUND_FILE_TO_PLAY = getSoundFile();
+    
     // Play sound using platform-specific command
     const command = process.platform === 'win32'
       ? `start "" "${SOUND_FILE_TO_PLAY}"`
@@ -109,7 +135,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error(`Notification MCP server running with sound: ${SOUND_FILE_TO_PLAY} from directory: ${process.cwd()}`);
+  console.error(`Notification MCP server running`);
 }
 
 main().catch((error) => {

@@ -1,41 +1,58 @@
-# ✨ Notifications MCP Server ✨
+<div align="center">
+  <img src="https://res.cloudinary.com/di7ctlowx/image/upload/v1748659972/notification-mcp-logo_ymwx1p.jpg" alt="Notification MCP Logo" width="200" height="200"/>
 
-Dream it, Pixel it. Made with ❤️ by Pink Pixel.
+  # ✨ Notifications MCP Server ✨
 
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Model Context Protocol](https://img.shields.io/badge/Model%20Context%20Protocol-Server-green)](https://github.com/model-context-protocol/model-context-protocol)
+  **Dream it, Pixel it. Made with ❤️ by Pink Pixel.**
+
+  [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Model Context Protocol](https://img.shields.io/badge/Model%20Context%20Protocol-Server-green)](https://github.com/model-context-protocol/model-context-protocol) [![npm version](https://badge.fury.io/js/@pinkpixel%2Fnotification-mcp.svg)](https://www.npmjs.com/package/@pinkpixel/notification-mcp) [![smithery badge](https://smithery.ai/badge/@pinkpixel-dev/notification-mcp)](https://smithery.ai/server/@pinkpixel-dev/notification-mcp)
+
+  [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/) [![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/) [![npm](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/package/@pinkpixel/notification-mcp)
+
+  [![NPM Downloads](https://img.shields.io/npm/dm/@pinkpixel/notification-mcp?style=flat-square&color=ff69b4)](https://www.npmjs.com/package/@pinkpixel/notification-mcp) [![GitHub Stars](https://img.shields.io/github/stars/pinkpixel-dev/notification-mcp?style=flat-square&color=ff69b4)](https://github.com/pinkpixel-dev/notification-mcp/stargazers) [![GitHub Issues](https://img.shields.io/github/issues/pinkpixel-dev/notification-mcp?style=flat-square&color=ff69b4)](https://github.com/pinkpixel-dev/notification-mcp/issues) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg?style=flat-square)](http://makeapullrequest.com)
+
+  [![Platform Support](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS-lightgrey?style=flat-square)](https://github.com/pinkpixel-dev/notification-mcp) [![Built with Love](https://img.shields.io/badge/Built%20with-❤️-ff1744.svg?style=flat-square)](https://pinkpixel.dev) [![Pink Pixel](https://img.shields.io/badge/Pink-Pixel-ff69b4?style=flat-square&logo=sparkles)](https://pinkpixel.dev)
+
+</div>
 
 ## Overview
 
-A Model Context Protocol server that allows AI agents to play a notification sound via a tool when a task is completed.
+A Model Context Protocol server that allows AI agents to play notification sounds when tasks are completed. This TypeScript-based MCP server provides a simple, configurable notification system with **bundled sounds that work out of the box** with npx!
 
-This is a TypeScript-based MCP server that provides a simple, configurable notification system. It demonstrates core MCP concepts by exposing a tool to play various sound alerts.
+## ✨ Features
 
-## Features
+### 🔧 Tools
+- `play_notification` - Play a notification sound to indicate task completion
+  - Takes an optional `message` parameter to display with the notification
+  - Supports cross-platform sound playback (Windows and macOS)
+  - **Works with bundled sounds** - no manual downloads required!
 
-### Tools
-- `play_notification` - Play a notification sound to indicate task completion.
-  - Takes an optional `message` parameter to display with the notification.
-  - Supports cross-platform sound playback (Windows and macOS).
+### 🎵 Built-in Sound Library
+**5 high-quality notification sounds bundled with the package:**
+- `cosmic` - Space-themed notification 🌌
+- `fairy` - Magical, whimsical tone 🧚‍♀️
+- `gentle` - Soft, pleasant default sound (default) 🔔
+- `pleasant` - Balanced, professional tone 📞
+- `retro` - Nostalgic, vintage-style notification 🕹️
+- `random` - Randomly plays one of the 5 sounds 🎲
 
-## Configuration
+## 🚀 Quick Start
 
-The notification sound can be configured using environment variables in your MCP client's configuration (e.g., `MCP_config.json`).
+### Option 1: Use Bundled Sounds (Recommended) ⭐
+Just run it with npx - sounds included!
 
-You can choose from a set of downloadable sound files, or use your own MP3 file. You must configure the "MCP_NOTIFICATION_SOUND_PATH" environment variable to point to your desired sound file.
+```json
+{
+  "mcpServers": {
+    "notifications": {
+      "command": "npx",
+      "args": ["-y", "@pinkpixel/notification-mcp"]
+    }
+  }
+}
+```
 
-**Available Sounds:**
-- cosmic_chime.mp3
-- fairy_chime.mp3
-- gentle_chime.mp3
-- pleasant_chime.mp3
-- retro_chime.mp3
-
-You can download these sounds from the github repository - [notification-mcp](https://github.com/pinkpixel-dev/notification-mcp)
-Or alteratively, you can use your own MP3 file.
-Whichever sound you choose, you must set the `MCP_NOTIFICATION_SOUND_PATH` environment variable to the full path of the sound MP3 file, like so:
-
-**Example `config.json` entry:**
+### Option 2: Choose a Different Bundled Sound
 ```json
 {
   "mcpServers": {
@@ -43,19 +60,63 @@ Whichever sound you choose, you must set the `MCP_NOTIFICATION_SOUND_PATH` envir
       "command": "npx",
       "args": ["-y", "@pinkpixel/notification-mcp"],
       "env": {
-        "MCP_NOTIFICATION_SOUND_PATH": "C:\\Users\\YOUR_USERNAME\\path\\to\\your\\sound.mp3"
+        "MCP_NOTIFICATION_SOUND": "cosmic"
       }
     }
   }
 }
 ```
-**Important Note:** Replace `C:\\Users\\YOUR_USERNAME\\path\\to\\your\\sound.mp3` with the actual absolute path to your MP3 file. Ensure the path uses double backslashes `\\` for Windows paths in JSON.
 
-## Usage
+### Option 3: Random Sound Each Time 🎲
+```json
+{
+  "mcpServers": {
+    "notifications": {
+      "command": "npx",
+      "args": ["-y", "@pinkpixel/notification-mcp"],
+      "env": {
+        "MCP_NOTIFICATION_SOUND": "random"
+      }
+    }
+  }
+}
+```
 
-Once the server is configured and running, your MCP client can call the `play_notification` tool.
+### Option 4: Use Your Own Custom Sound
+```json
+{
+  "mcpServers": {
+    "notifications": {
+      "command": "npx",
+      "args": ["-y", "@pinkpixel/notification-mcp"],
+      "env": {
+        "MCP_NOTIFICATION_SOUND_PATH": "C:\\path\\to\\your\\sound.mp3"
+      }
+    }
+  }
+}
+```
 
-**Example Tool Call (from an AI agent or client SDK):**
+## ⚙️ Configuration
+
+The notification sound can be configured using environment variables:
+
+### Environment Variables
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `MCP_NOTIFICATION_SOUND` | Choose from bundled sounds: `cosmic`, `fairy`, `gentle`, `pleasant`, `retro`, `random` | `gentle` |
+| `MCP_NOTIFICATION_SOUND_PATH` | Absolute path to your own MP3 file (overrides bundled sounds) | `null` |
+
+### Priority Order
+1. **Custom Path** (`MCP_NOTIFICATION_SOUND_PATH`) - highest priority
+2. **Bundled Sound** (`MCP_NOTIFICATION_SOUND`) - choose from 5 included sounds
+3. **Default** - gentle chime if nothing is specified
+
+## 💻 Usage
+
+Once configured, your MCP client can call the `play_notification` tool:
+
 ```typescript
 await client.request({
   method: "tools/call",
@@ -68,59 +129,34 @@ await client.request({
 });
 ```
 
-## Development
+## 🛠️ Development
 
-Install dependencies:
+### Local Development Setup
+
 ```bash
+# Clone the repository
+git clone https://github.com/pinkpixel-dev/notification-mcp.git
+cd notification-mcp
+
+# Install dependencies
 npm install
-```
 
-Build the server:
-```bash
+# Build the server
 npm run build
-```
 
-For development with auto-rebuild:
-```bash
+# For development with auto-rebuild
 npm run watch
 ```
 
-## Installation
-
-### Installing via Smithery
-
-To install your MCP Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@pinkpixel-dev/notification-mcp):
-
-```bash
-npx -y @smithery/cli install @pinkpixel-dev/notification-mcp --client claude
-```
-
-### Run with npx:
-
-```json
-{
-  "mcpServers": {
-    "notifications": {
-      "command": "npx",
-      "args": ["-y", "@pinkpixel/notification-mcp"]
-      "env": {
-        "MCP_NOTIFICATION_SOUND_PATH": "C:\\Users\\YOUR_USERNAME\\path\\to\\your\\sound.mp3"
-        }
-      }
-   }
-}
-```
-
-### Clone the Repository
-
+### Local Development Configuration
 ```json
 {
   "mcpServers": {
     "notifications": {
       "command": "node",
-      "args": ["\\path\\to\\notification-mcp\\build\\index.js"],
+      "args": ["./build/index.js"],
       "env": {
-        "MCP_NOTIFICATION_SOUND_PATH": "C:\\Users\\YOUR_USERNAME\\path\\to\\your\\sound.mp3"
+        "MCP_NOTIFICATION_SOUND": "retro"
       }
     }
   }
@@ -129,10 +165,59 @@ npx -y @smithery/cli install @pinkpixel-dev/notification-mcp --client claude
 
 ### Debugging
 
-Since MCP servers communicate over stdio, debugging can be challenging. We recommend using the [MCP Inspector](https://github.com/modelcontextprotocol/inspector), which is available as a package script:
+Use the [MCP Inspector](https://github.com/modelcontextprotocol/inspector) for interactive debugging:
 
 ```bash
 npm run inspector
 ```
 
-The Inspector will provide a URL to access debugging tools in your browser.
+The Inspector provides a web interface to test your MCP server in your browser.
+
+## 📦 Installation Methods
+
+### NPX (Recommended)
+No installation required - sounds are bundled automatically:
+```bash
+npx @pinkpixel/notification-mcp
+```
+
+### Global Install
+```bash
+npm install -g @pinkpixel/notification-mcp
+notification-mcp
+```
+
+### Local Install
+```bash
+npm install @pinkpixel/notification-mcp
+npx notification-mcp
+```
+
+## 🎵 Sound Files
+
+All sound files are located in the `sounds/` directory and are automatically included when you install the package:
+
+- Cosmic: `sounds/cosmic_chime.mp3` - 🌌 Space-themed
+- Fairy: `sounds/fairy_chime.mp3` - 🧚‍♀️ Magical
+- Gentle: `sounds/gentle_chime.mp3` - 🔔 Default (soft)
+- Pleasant:`sounds/pleasant_chime.mp3` - 📞 Professional
+- Retro: `sounds/retro_chime.mp3` - 🕹️ Vintage
+- Random: Set `MCP_NOTIFICATION_SOUND=random` - 🎲 Surprise me!
+
+## 🤝 Contributing
+
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🌟 About Pink Pixel
+
+- **Website:** [pinkpixel.dev](https://pinkpixel.dev)
+- **GitHub:** [github.com/pinkpixel-dev](https://github.com/pinkpixel-dev)
+- **Discord:** @sizzlebop
+
+---
+
+*Made with ❤️ by Pink Pixel* ✨
