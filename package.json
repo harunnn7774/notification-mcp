@@ -1,13 +1,14 @@
 {
   "name": "@pinkpixel/notification-mcp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A model context protocol server that allows AI agents to play a notification sound via a tool when a task is completed",
   "type": "module",
   "bin": {
     "notification-mcp": "./build/index.js"
   },
   "files": [
-    "build"
+    "build",
+    "sounds"
   ],
   "scripts": {
     "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
@@ -21,5 +22,27 @@
   "devDependencies": {
     "@types/node": "^22.15.26",
     "typescript": "^5.8.3"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "notification",
+    "sound",
+    "ai",
+    "assistant"
+  ],
+  "author": {
+    "name": "Pink Pixel",
+    "email": "hello@pinkpixel.dev",
+    "url": "https://pinkpixel.dev"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pinkpixel-dev/notification-mcp.git"
+  },
+  "homepage": "https://github.com/pinkpixel-dev/notification-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/pinkpixel-dev/notification-mcp/issues"
   }
 }
