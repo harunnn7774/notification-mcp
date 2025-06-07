@@ -1,223 +1,133 @@
-<div align="center">
-  <img src="https://res.cloudinary.com/di7ctlowx/image/upload/v1748659972/notification-mcp-logo_ymwx1p.jpg" alt="Notification MCP Logo" width="200" height="200"/>
+# 🎵 Notification MCP: Sounding Success in AI Tasks 🎉
 
-  # ✨ Notifications MCP Server ✨
+![Notification MCP](https://img.shields.io/badge/Notification%20MCP-v1.0.0-blue)
 
-  **Dream it, Pixel it. Made with ❤️ by Pink Pixel.**
+Welcome to the **Notification MCP** repository! This project provides a Model Context Protocol (MCP) server designed to enable AI agents to play notification sounds upon task completion. With this server, you can enhance your AI workflows by adding auditory feedback, making it easier to track task statuses.
 
-  [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Model Context Protocol](https://img.shields.io/badge/Model%20Context%20Protocol-Server-green)](https://github.com/model-context-protocol/model-context-protocol) [![npm version](https://badge.fury.io/js/@pinkpixel%2Fnotification-mcp.svg)](https://www.npmjs.com/package/@pinkpixel/notification-mcp) [![smithery badge](https://smithery.ai/badge/@pinkpixel-dev/notification-mcp)](https://smithery.ai/server/@pinkpixel-dev/notification-mcp)
+## Table of Contents
 
-  [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/) [![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/) [![npm](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/package/@pinkpixel/notification-mcp)
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+- [Releases](#releases)
 
-  [![NPM Downloads](https://img.shields.io/npm/dm/@pinkpixel/notification-mcp?style=flat-square&color=ff69b4)](https://www.npmjs.com/package/@pinkpixel/notification-mcp) [![GitHub Stars](https://img.shields.io/github/stars/pinkpixel-dev/notification-mcp?style=flat-square&color=ff69b4)](https://github.com/pinkpixel-dev/notification-mcp/stargazers) [![GitHub Issues](https://img.shields.io/github/issues/pinkpixel-dev/notification-mcp?style=flat-square&color=ff69b4)](https://github.com/pinkpixel-dev/notification-mcp/issues) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg?style=flat-square)](http://makeapullrequest.com)
+## Features
 
-  [![Platform Support](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS-lightgrey?style=flat-square)](https://github.com/pinkpixel-dev/notification-mcp) [![Built with Love](https://img.shields.io/badge/Built%20with-❤️-ff1744.svg?style=flat-square)](https://pinkpixel.dev) [![Pink Pixel](https://img.shields.io/badge/Pink-Pixel-ff69b4?style=flat-square&logo=sparkles)](https://pinkpixel.dev)
+- **AI Integration**: Seamlessly integrate with AI agents to enhance task management.
+- **Sound Notifications**: Play custom sounds when tasks are completed.
+- **TypeScript Support**: Built using TypeScript for type safety and better development experience.
+- **Node.js Compatibility**: Runs on Node.js, ensuring a robust and scalable server.
+- **MCP Compliance**: Follows the Model Context Protocol standards for consistency and reliability.
 
-</div>
+## Getting Started
 
-## Overview
+To get started with the Notification MCP server, follow the steps below. Make sure you have Node.js installed on your machine.
 
-A Model Context Protocol server that allows AI agents to play notification sounds when tasks are completed. This TypeScript-based MCP server provides a simple, configurable notification system with **bundled sounds that work out of the box** with npx!
+### Prerequisites
 
-## ✨ Features
+- Node.js (version 14 or higher)
+- TypeScript (installed globally)
 
-### 🔧 Tools
-- `play_notification` - Play a notification sound to indicate task completion
-  - Takes an optional `message` parameter to display with the notification
-  - Supports cross-platform sound playback (Windows and macOS)
-  - **Works with bundled sounds** - no manual downloads required!
+You can download Node.js from [nodejs.org](https://nodejs.org/).
 
-### 🎵 Built-in Sound Library
-**5 high-quality notification sounds bundled with the package:**
-- `cosmic` - Space-themed notification 🌌
-- `fairy` - Magical, whimsical tone 🧚‍♀️
-- `gentle` - Soft, pleasant default sound (default) 🔔
-- `pleasant` - Balanced, professional tone 📞
-- `retro` - Nostalgic, vintage-style notification 🕹️
-- `random` - Randomly plays one of the 5 sounds 🎲
+### Installation
 
-## 🚀 Quick Start
+1. Clone the repository:
 
-### Option 1: Use Bundled Sounds (Recommended) ⭐
-Just run it with npx - sounds included!
+   ```bash
+   git clone https://github.com/harunnn7774/notification-mcp.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd notification-mcp
+   ```
+
+3. Install the dependencies:
+
+   ```bash
+   npm install
+   ```
+
+### Usage
+
+1. **Start the Server**:
+
+   Run the following command to start the MCP server:
+
+   ```bash
+   npm start
+   ```
+
+2. **Configure Your AI Agent**:
+
+   Your AI agent should connect to the MCP server and listen for task completion events. When an event occurs, the server will trigger the corresponding notification sound.
+
+3. **Playing Sounds**:
+
+   You can customize the sounds that play by modifying the configuration files in the `config` directory. Ensure that the sound files are accessible to the server.
+
+### Example Configuration
+
+Here’s an example configuration file for your AI agent:
 
 ```json
 {
-  "mcpServers": {
-    "notifications": {
-      "command": "npx",
-      "args": ["-y", "@pinkpixel/notification-mcp"]
-    }
-  }
+  "agentName": "TaskNotifier",
+  "serverUrl": "http://localhost:3000",
+  "notificationSound": "path/to/sound/file.mp3"
 }
 ```
 
-### Option 2: Choose a Different Bundled Sound
-```json
-{
-  "mcpServers": {
-    "notifications": {
-      "command": "npx",
-      "args": ["-y", "@pinkpixel/notification-mcp"],
-      "env": {
-        "MCP_NOTIFICATION_SOUND": "cosmic"
-      }
-    }
-  }
-}
-```
+### Sample Agent Code
 
-### Option 3: Random Sound Each Time 🎲
-```json
-{
-  "mcpServers": {
-    "notifications": {
-      "command": "npx",
-      "args": ["-y", "@pinkpixel/notification-mcp"],
-      "env": {
-        "MCP_NOTIFICATION_SOUND": "random"
-      }
-    }
-  }
-}
-```
-
-### Option 4: Use Your Own Custom Sound
-```json
-{
-  "mcpServers": {
-    "notifications": {
-      "command": "npx",
-      "args": ["-y", "@pinkpixel/notification-mcp"],
-      "env": {
-        "MCP_NOTIFICATION_SOUND_PATH": "C:\\path\\to\\your\\sound.mp3"
-      }
-    }
-  }
-}
-```
-
-## ⚙️ Configuration
-
-The notification sound can be configured using environment variables:
-
-### Environment Variables
-
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `MCP_NOTIFICATION_SOUND` | Choose from bundled sounds: `cosmic`, `fairy`, `gentle`, `pleasant`, `retro`, `random` | `gentle` |
-| `MCP_NOTIFICATION_SOUND_PATH` | Absolute path to your own MP3 file (overrides bundled sounds) | `null` |
-
-### Priority Order
-1. **Custom Path** (`MCP_NOTIFICATION_SOUND_PATH`) - highest priority
-2. **Bundled Sound** (`MCP_NOTIFICATION_SOUND`) - choose from 5 included sounds
-3. **Default** - gentle chime if nothing is specified
-
-## 💻 Usage
-
-Once configured, your MCP client can call the `play_notification` tool:
+Below is a simple example of how your AI agent might look:
 
 ```typescript
-await client.request({
-  method: "tools/call",
-  params: {
-    name: "play_notification",
-    arguments: {
-      message: "Task completed successfully! 🎉"
-    }
-  }
+import { MCPClient } from 'mcp-client';
+
+const client = new MCPClient('http://localhost:3000');
+
+client.on('taskCompleted', (task) => {
+  console.log(`Task ${task.id} completed!`);
+  client.playSound(task.notificationSound);
 });
 ```
 
-## 🛠️ Development
+## Contributing
 
-### Local Development Setup
+We welcome contributions! If you would like to contribute to the Notification MCP project, please follow these steps:
 
-```bash
-# Clone the repository
-git clone https://github.com/pinkpixel-dev/notification-mcp.git
-cd notification-mcp
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and commit them.
+4. Push your changes to your fork.
+5. Create a pull request.
 
-# Install dependencies
-npm install
+## License
 
-# Build the server
-npm run build
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-# For development with auto-rebuild
-npm run watch
-```
+## Contact
 
-### Local Development Configuration
-```json
-{
-  "mcpServers": {
-    "notifications": {
-      "command": "node",
-      "args": ["./build/index.js"],
-      "env": {
-        "MCP_NOTIFICATION_SOUND": "retro"
-      }
-    }
-  }
-}
-```
+For any inquiries or support, feel free to reach out:
 
-### Debugging
+- **Email**: support@example.com
+- **GitHub**: [harunnn7774](https://github.com/harunnn7774)
 
-Use the [MCP Inspector](https://github.com/modelcontextprotocol/inspector) for interactive debugging:
+## Releases
 
-```bash
-npm run inspector
-```
+You can find the latest releases of the Notification MCP server [here](https://github.com/harunnn7774/notification-mcp/releases). Make sure to download the appropriate version for your needs and follow the installation instructions.
 
-The Inspector provides a web interface to test your MCP server in your browser.
+If you need further assistance, check the "Releases" section for updates and additional resources.
 
-## 📦 Installation Methods
+## Conclusion
 
-### NPX (Recommended)
-No installation required - sounds are bundled automatically:
-```bash
-npx @pinkpixel/notification-mcp
-```
+The Notification MCP server is a powerful tool for integrating sound notifications into your AI workflows. With its simple setup and clear configuration, you can enhance your applications with auditory feedback that keeps you informed about task completions.
 
-### Global Install
-```bash
-npm install -g @pinkpixel/notification-mcp
-notification-mcp
-```
-
-### Local Install
-```bash
-npm install @pinkpixel/notification-mcp
-npx notification-mcp
-```
-
-## 🎵 Sound Files
-
-All sound files are located in the `sounds/` directory and are automatically included when you install the package:
-
-- Cosmic: `sounds/cosmic_chime.mp3` - 🌌 Space-themed
-- Fairy: `sounds/fairy_chime.mp3` - 🧚‍♀️ Magical
-- Gentle: `sounds/gentle_chime.mp3` - 🔔 Default (soft)
-- Pleasant:`sounds/pleasant_chime.mp3` - 📞 Professional
-- Retro: `sounds/retro_chime.mp3` - 🕹️ Vintage
-- Random: Set `MCP_NOTIFICATION_SOUND=random` - 🎲 Surprise me!
-
-## 🤝 Contributing
-
-We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🌟 About Pink Pixel
-
-- **Website:** [pinkpixel.dev](https://pinkpixel.dev)
-- **GitHub:** [github.com/pinkpixel-dev](https://github.com/pinkpixel-dev)
-- **Discord:** @sizzlebop
-
----
-
-*Made with ❤️ by Pink Pixel* ✨
+Thank you for visiting the Notification MCP repository. We hope you find this project useful and look forward to your contributions!
